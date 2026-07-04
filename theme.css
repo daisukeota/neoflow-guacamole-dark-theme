@@ -326,13 +326,67 @@ table td {
     color: #e4e4e7 !important; /* 読みやすい少し明るめのグレー(Zinc-200) */
 }
 
-/* 接続先リスト・カード部分 */
-.connection-list .connection, .recent-connections .connection {
-    background: #18181b !important;
-    border: 1px solid #27272a !important;
-    color: #f4f4f5 !important;
+/* --------------------------------------------------------------------------
+   5. 接続先ツリーリスト（shadcn/ui ステルスホバー仕様）
+   -------------------------------------------------------------------------- */
+/* リスト全体のコンテナ背景を完全にフラットな黒(Zinc-950)に */
+.group-list, 
+.group-list-page, 
+.list-item, 
+.caption, 
+.connection, 
+.new-sharing-profile,
+.children {
+    background-color: transparent !important;
+    border-color: #18181b !important; /* 階層の境界線を薄いグレーに */
 }
 
-.connection-list .connection:hover, .recent-connections .connection:hover {
-    background: #27272a !important;
+/* 接続アイテム（aタグ）の標準状態：文字はZinc-200 */
+.group-list a,
+a.settings-connection,
+a.new-sharing-profile {
+    color: #e4e4e7 !important; /* Zinc-200 */
+    display: flex !important;
+    align-items: center !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    transition: background-color 0.15s, color 0.15s !important;
+    text-decoration: none !important;
+    background-color: transparent !important;
+}
+
+/* 🚨【明るさ調整】マウスオーバー時：明るすぎず、上品にほんのり浮き上がる(Zinc-900) */
+.group-list a:hover,
+a.settings-connection:hover,
+a.new-sharing-profile:hover,
+.caption:hover {
+    background-color: #18181b !important; /* 👈 明るすぎない絶妙なレイヤーグレー */
+    color: #ffffff !important; /* 文字は純白に輝かせる */
+}
+
+/* 展開用アイコン(▶︎ / ▼)のホバー時の色も白に固定 */
+.icon.expand {
+    transition: transform 0.15s, opacity 0.15s !important;
+}
+.caption:hover .icon.expand {
+    opacity: 1 !important;
+}
+
+/* 子階層（展開された下のアイテム）のコンテナ調整 */
+.group-list .children {
+    padding-left: 24px !important; /* 綺麗なインデントを確保 */
+    border-left: 1px solid #18181b !important; /* 左側に薄いガイド線を挿入 */
+    margin-left: 18px !important;
+}
+
+/* ページャー（下部の「1」などのページ選択）もダークモード化 */
+.pager .page-numbers li {
+    color: #a1a1aa !important;
+    background-color: transparent !important;
+    border: 1px solid #27272a !important;
+    border-radius: 4px !important;
+}
+.pager .page-numbers li.current {
+    color: #09090b !important;
+    background-color: #f4f4f5 !important; /* 現在のページは反転白 */
 }

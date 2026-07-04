@@ -221,8 +221,6 @@ button, .button, .submit-button, .change-password, .action-buttons button {
     text-decoration: none !important;
     transition: background-color 0.2s, border-color 0.2s !important;
     box-sizing: border-box !important;
-    
-    /* 🚨【超重要】Guacamoleの古い立体感（影）を完全に抹消してフラット化 */
     text-shadow: none !important;
     box-shadow: none !important;
 }
@@ -232,14 +230,25 @@ button:hover, .button:hover, .submit-button:hover, .change-password:hover, .acti
     color: #ffffff !important;
 }
 
-/* 🚨【絶対解決】Update Password などのプレーンボタンを直撃し、文字を美しく中央配置 */
+/* 🚨【絶対解決】邪魔をしていた ::before 疑似要素（アイコン）を完全に破壊・消去 */
+button.change-password::before,
+.change-password::before,
+.action-buttons button::before,
+.action-buttons button.change-password::before {
+    display: none !important;
+    content: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* 🚨 Update Password などのプレーンボタンの余白を完全に対称（中央配置）にする */
 button.change-password,
 .change-password,
 .action-buttons button,
 .action-buttons button.change-password {
-    padding-left: 16px !important; /* 👈 アイコン用の余白（2em等）を16pxで強制上書きしてリセット */
+    padding-left: 16px !important; /* 👈 邪魔者が消えたため、16pxで完全に美しい中央に整列します */
     padding-right: 16px !important;
-    background-image: none !important; /* もし裏で読み込まれているアイコンがあれば消去 */
+    background-image: none !important;
 }
 
 /* 🚨 アイコン付きボタン群（New Connectionなど）は左側に安全なスペースを維持 */
@@ -252,6 +261,15 @@ button.change-password,
 .button.import {
     padding-left: 36px !important; 
     background-position: 12px center !important; 
+}
+
+/* 🚨 アイコン付きボタンの ::before は消さないように保護 */
+.button.add-connection::before,
+.button.add-connection-group::before,
+.button.import-connections::before,
+.button.add-user-group::before,
+.button.add-user::before {
+    display: inline-block !important;
 }
 
 /* 検索窓やセレクトボックス */

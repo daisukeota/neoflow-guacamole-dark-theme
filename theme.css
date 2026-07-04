@@ -65,7 +65,7 @@ h2, h3, .header h2, p {
 }
 
 /* --------------------------------------------------------------------------
-   3. ナビゲーションタブ・トップメニューの視認性改善
+   3. ナビゲーションタブ・トップメニューの視認性改善（強化版）
    -------------------------------------------------------------------------- */
 .header, .navigation, .user-menu {
     background-color: #18181b !important;
@@ -75,38 +75,47 @@ h2, h3, .header h2, p {
 /* タブのコンテナとリストの背景・枠線をクリア */
 .navigation li, 
 .navigation .menu-dropdown, 
-.navigation .client-group {
+.navigation .client-group,
+.navigation .links {
     background: transparent !important;
     border: none !important;
 }
 
-/* タブ文字（History, Users, Groupsなど）を強制的に明るいグレーに */
+/* 🚨【最重要】Active Sessions や History などの文字色を強制的に明るくする */
+.navigation .links a,
+.navigation .links a:link,
+.navigation .links a:visited,
 .navigation a, 
-.navigation a:link, 
-.navigation a:visited, 
-.navigation span {
-    color: #a1a1aa !important;
+.navigation span,
+.menu-dropdown a {
+    color: #f4f4f5 !important; /* shadcn/uiの明るいテキスト色(Zinc-100) */
     font-weight: 500 !important;
     background: transparent !important;
     border: none !important;
     padding: 6px 12px !important;
     display: inline-block !important;
+    opacity: 0.9 !important;
 }
 
-/* ホバーした時は白文字に */
+/* ホバーした時は完全な白に輝かせる */
+.navigation .links a:hover,
 .navigation a:hover, 
-.navigation span:hover {
+.navigation span:hover,
+.menu-dropdown a:hover {
     color: #ffffff !important;
+    opacity: 1 !important;
     text-decoration: none !important;
 }
 
-/* 現在アクティブ（選択中）のタブ */
+/* 現在アクティブ（選択中）のタブの背景をZincスタイルにする */
+.navigation .links a.active,
 .navigation a.active, 
 .navigation li.active a,
-.navigation .menu-dropdown a.active {
+.menu-dropdown a.active {
     color: #ffffff !important;
-    background-color: #27272a !important;
+    background-color: #27272a !important; /* ほどよいグレーの背景(Zinc-800) */
     border-radius: 6px !important;
+    opacity: 1 !important;
 }
 
 /* ユーザー名メニュー部分の調整 */

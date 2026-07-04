@@ -1,6 +1,6 @@
 /* ==========================================================================
    Dark Color System for Apache Guacamole (shadcn/ui Zinc)
-   ========================================================================== */
+   ========================================================================= */
 
 /* --------------------------------------------------------------------------
    1. ログイン画面 (Login UI)
@@ -52,27 +52,28 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. メイン画面・管理UI全体の背景と基本設定
+   2. メイン画面・管理UI全体の背景
    -------------------------------------------------------------------------- */
-body, .viewport, .main-view, .settings-view {
+body, .viewport, .main-view, .settings-view, .page-container {
     background-color: #09090b !important;
     color: #f4f4f5 !important;
 }
 
-/* ページ見出し等の文字色調整 */
-h2, h3, .header h2, p {
+/* ページ見出し等の基本文字色 */
+h2, h3, .header h2, p, .title {
     color: #ffffff !important;
 }
 
 /* --------------------------------------------------------------------------
-   3. ナビゲーションタブ・トップメニューの視認性改善（完全版）
+   3. ナビゲーション・メニュー・全タブ（文字消え絶対防止）
    -------------------------------------------------------------------------- */
-.header, .navigation, .user-menu {
-    background-color: #18181b !important;
+/* メニューバー全体のコンテナ */
+.header, .navigation, .user-menu, .menu-dropdown {
+    background-color: #18181b !important; /* レイヤー1個上のグレー (Zinc-900) */
     border-bottom: 1px solid #27272a !important;
 }
 
-/* タブやメニューコンテナの背景・枠線をクリア */
+/* 不要な標準の背景や枠線を徹底カット */
 .navigation li, 
 .navigation .menu-dropdown, 
 .navigation .client-group,
@@ -83,60 +84,59 @@ h2, h3, .header h2, p {
     border: none !important;
 }
 
-/* 🚨【超重要】すべてのメニュー・リンク文字（Home, Settings, Logout, ユーザー名など）を強制白に */
-.navigation a, 
-.navigation a:link, 
-.navigation a:visited, 
-.navigation span,
-.user-menu .menu-title,
-.user-menu .menu-title a,
-.user-menu .name,
-.menu-dropdown a,
-.links a {
-    color: #f4f4f5 !important; /* 明るいテキスト(Zinc-100) */
+/* 🚨【絶対解決】Active Sessions, History, Home, Settings等の「全文字」を白に強制固定 */
+.navigation *,
+.user-menu *,
+.menu-dropdown *,
+.links *,
+.menu-title,
+.name {
+    color: #f4f4f5 !important; /* パキッと見える明るいグレー (Zinc-100) */
     font-weight: 500 !important;
-    background: transparent !important;
-    border: none !important;
-    padding: 6px 12px !important;
-    display: inline-block !important;
-    opacity: 0.9 !important;
     text-decoration: none !important;
+    border: none !important;
 }
 
-/* ホバーした時は完全な白に */
+/* メニューの各項目(aタグ)にパディングを設定し押しやすく */
+.navigation a,
+.menu-dropdown a,
+.links a {
+    padding: 6px 12px !important;
+    display: inline-block !important;
+    border-radius: 6px !important;
+}
+
+/* ホバー時は完全な純白に */
 .navigation a:hover, 
-.navigation span:hover,
-.user-menu .menu-title:hover,
-.user-menu .name:hover,
+.user-menu *:hover,
 .menu-dropdown a:hover,
 .links a:hover {
     color: #ffffff !important;
-    opacity: 1 !important;
-    text-decoration: none !important;
+    background-color: #27272a !important; /* ほんのりハイライト (Zinc-800) */
 }
 
-/* 現在アクティブ（選択中）のメニュー背景 */
-.navigation a.active, 
-.navigation li.active a,
-.menu-dropdown a.active,
-.links a.active {
+/* 🚨 現在選択中のタブ（Active Sessionsなど）をshadcn/ui風にマーク */
+.navigation .active,
+.navigation .active *,
+.links .active,
+.links .active *,
+.navigation li.active a {
     color: #ffffff !important;
-    background-color: #27272a !important; /* ほどよいグレー背景(Zinc-800) */
-    border-radius: 6px !important;
-    opacity: 1 !important;
+    background-color: #27272a !important; /* 選択中のインジケーター */
 }
 
 /* --------------------------------------------------------------------------
-   4. ボタン・インプット・テーブル等（設定画面のコンポーネント）
+   4. テーブル・ボタン・フォーム部品（設定画面のコンポーネント）
    -------------------------------------------------------------------------- */
-/* Kill Sessions ボタンなど標準ボタンのダーク化 */
-button, .button {
+/* ボタン（Kill Sessionsなど） */
+button, .button, .submit-button {
     background-color: #27272a !important;
     color: #f4f4f5 !important;
     border: 1px solid #3f3f46 !important;
     border-radius: 6px !important;
     padding: 6px 12px !important;
     cursor: pointer !important;
+    font-weight: 500 !important;
 }
 
 button:hover, .button:hover {
@@ -144,7 +144,7 @@ button:hover, .button:hover {
     color: #ffffff !important;
 }
 
-/* フィルター入力フォームの調整 */
+/* 検索窓やセレクトボックス */
 input, select, textarea {
     background-color: #18181b !important;
     color: #f4f4f5 !important;
@@ -153,16 +153,21 @@ input, select, textarea {
     padding: 6px 12px !important;
 }
 
-input:focus, select:focus {
+input:focus {
     border-color: #a1a1aa !important;
     outline: none !important;
 }
 
-/* テーブルヘッダーの調整 */
+/* 設定画面のデータテーブル */
 table th, table.sorted th {
     background-color: #18181b !important;
     color: #ffffff !important;
     border-bottom: 1px solid #27272a !important;
+}
+
+table td {
+    border-bottom: 1px solid #18181b !important;
+    color: #e4e4e7 !important;
 }
 
 /* 接続先リスト・カード部分 */

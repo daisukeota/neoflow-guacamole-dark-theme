@@ -47,3 +47,36 @@
 .login-ui .submit:hover {
     background: #e4e4e7 !important;
 }
+
+/* ==========================================================================
+   ログイン後のメイン画面・管理UIのダークモード化
+   ========================================================================== */
+
+/* 全体の背景と文字色 */
+body, .viewport, .main-view {
+    background-color: #09090b !important;
+    color: #f4f4f5 !important;
+}
+
+/* ヘッダー・ナビゲーション部分 */
+.header, .navigation, .user-menu {
+    background-color: #18181b !important;
+    border-bottom: 1px solid #27272a !important;
+    color: #ffffff !important;
+}
+
+/* 接続先カード・リスト部分 */
+.connection-list .connection, .recent-connections .connection {
+    background: #18181b !important;
+    border: 1px solid #27272a !important;
+    color: #f4f4f5 !important;
+}
+
+.connection-list .connection:hover, .recent-connections .connection:hover {
+    background: #27272a !important;
+}
+
+/* テキストやタイトルの色調整 */
+h2, h3, .name {
+    color: #ffffff !important;
+}

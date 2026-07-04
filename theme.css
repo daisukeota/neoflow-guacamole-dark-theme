@@ -206,7 +206,7 @@ div.menu-title:hover,
 }
 
 /* --------------------------------------------------------------------------
-   4. ボタン・フォーム部品（各種ボタンのアイコン重なり・文字めり込み完全対策）
+   4. ボタン・フォーム部品（各種ボタンのアイコン重なり・立体感の完全対策）
    -------------------------------------------------------------------------- */
 /* Kill Sessions、Update Password、その他すべての標準ボタンのベース */
 button, .button, .submit-button, .change-password, .action-buttons button {
@@ -214,13 +214,17 @@ button, .button, .submit-button, .change-password, .action-buttons button {
     color: #f4f4f5 !important; /* Zinc-100 */
     border: 1px solid #3f3f46 !important; /* Zinc-700 */
     border-radius: 6px !important;
-    padding: 8px 16px !important; /* 🚨 プレーンなボタンの文字めり込みを防ぐため上下8px・左右16pxに拡張 */
+    padding: 8px 16px !important; /* フラットデザインの黄金比パディング */
     cursor: pointer !important;
     font-weight: 500 !important;
     display: inline-block !important;
     text-decoration: none !important;
     transition: background-color 0.2s, border-color 0.2s !important;
     box-sizing: border-box !important;
+    
+    /* 🚨【超重要】Guacamoleの古い立体感（影）を完全に抹消してフラット化 */
+    text-shadow: none !important;
+    box-shadow: none !important;
 }
 
 button:hover, .button:hover, .submit-button:hover, .change-password:hover, .action-buttons button:hover {
@@ -228,16 +232,17 @@ button:hover, .button:hover, .submit-button:hover, .change-password:hover, .acti
     color: #ffffff !important;
 }
 
-/* 🚨【絶対解決】Update Password ボタンの背景アイコン設定を完全に消去し、パディングを固定 */
+/* 🚨【絶対解決】Update Password などのプレーンボタンを直撃し、文字を美しく中央配置 */
 button.change-password,
 .change-password,
+.action-buttons button,
 .action-buttons button.change-password {
-    padding-left: 16px !important; /* 👈 左側の枠線から文字を16px綺麗に離します */
+    padding-left: 16px !important; /* 👈 アイコン用の余白（2em等）を16pxで強制上書きしてリセット */
     padding-right: 16px !important;
-    background-image: none !important;
+    background-image: none !important; /* もし裏で読み込まれているアイコンがあれば消去 */
 }
 
-/* 🚨 アイコン付きボタン群（New Connectionなど）だけを狙い撃ちして、左側に安全なスペースを強制確保 */
+/* 🚨 アイコン付きボタン群（New Connectionなど）は左側に安全なスペースを維持 */
 .button.add-connection,
 .button.add-connection-group,
 .button.import-connections,

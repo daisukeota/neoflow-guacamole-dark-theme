@@ -74,7 +74,8 @@ h2, h3, .header h2, p, .title {
 .menu-dropdown, 
 .page-list-level,
 .user-menu.open .menu-dropdown,
-.user-menu .menu-dropdown {
+.user-menu .menu-dropdown,
+.user-menu .menu-contents { /* 🚨 白い箱の正体である中身コンテナを直撃 */
     background-color: #18181b !important; /* レイヤー1個上のグレー (Zinc-900) */
 }
 
@@ -82,10 +83,14 @@ h2, h3, .header h2, p, .title {
 .header {
     border-bottom: 1px solid #27272a !important;
 }
-.user-menu .menu-dropdown {
+
+/* 🚨 ドロップダウンメニューの「白い四角い箱」を完全にダーク化＆枠線指定 */
+.user-menu .menu-dropdown,
+.user-menu .menu-contents {
     border: 1px solid #27272a !important;
     border-radius: 6px !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+    background: #18181b !important;
 }
 
 /* 不要な標準の背景や枠線を徹底カット */
@@ -94,12 +99,14 @@ h2, h3, .header h2, p, .title {
 .navigation .client-group,
 .navigation .links,
 .page-list-level,
-.page-list-level li {
+.page-list-level li,
+.user-menu .profile,
+.user-menu .action-list {
     background: transparent !important;
     border: none !important;
 }
 
-/* 【絶対解決】すべてのメニューテキストを強制的に明るく */
+/* 🚨【絶対解決】ドロップダウン内の「すべてのテキスト・名前・会社名・リンク」を常時白に強制 */
 .navigation *,
 .user-menu *,
 .menu-dropdown *,
@@ -114,31 +121,46 @@ h2, h3, .header h2, p, .title {
 .menu-dropdown a:link,
 .menu-dropdown a:visited,
 div.menu-title,
-.user-menu div.menu-title {
+.user-menu div.menu-title,
+.user-menu .profile *,
+.user-menu .full-name a,
+.user-menu .organization,
+.user-menu .logout,
+.user-menu .action-list a {
     color: #f4f4f5 !important; /* 明るいグレー (Zinc-100) */
     font-weight: 500 !important;
     text-decoration: none !important;
     border: none !important;
 }
 
+/* 会社名や組織名の文字を少しだけ視認性の良いグレーに微調整 */
+.user-menu .organization,
+.user-menu .organizational-role {
+    color: #a1a1aa !important; /* Zinc-400 */
+    font-size: 0.85em !important;
+    padding: 2px 12px !important;
+}
+
 /* 各メニューの項目に適切な内包パディングと角丸を設定 */
 .navigation a,
 .menu-dropdown a,
 .links a,
-.page-list-level a {
+.page-list-level a,
+.user-menu .action-list a,
+.user-menu .full-name a {
     padding: 8px 12px !important;
     display: inline-block !important;
     border-radius: 6px !important;
 }
 
-/* 🚨【アイコンの重なり解消】左のヒト型アイコン、右の三角アイコンの両方と絶対に重ならないパディング設定 */
+/* 🚨 左のヒト型アイコン、右の三角アイコンの両方と絶対に重ならないパディング設定 */
 .user-menu .menu-title,
 div.menu-title,
 .user-menu div.menu-title {
     padding-top: 8px !important;
-    padding-left: 32px !important;  /* 👈 左のヒト型アイコンとの衝突を回避 */
+    padding-left: 32px !important;  
     padding-bottom: 8px !important;
-    padding-right: 32px !important; /* 👈 右の三角アイコンとの衝突を回避 */
+    padding-right: 32px !important; 
     display: inline-block !important;
     border-radius: 6px !important;
     transition: background-color 0.2s, color 0.2s !important;
@@ -147,7 +169,9 @@ div.menu-title,
 
 /* ナビゲーションやドロップダウンの各aタグを横いっぱいに広げる設定 */
 .menu-dropdown a,
-.page-list-level a {
+.page-list-level a,
+.user-menu .action-list a,
+.user-menu .full-name a {
     width: 100% !important;
     box-sizing: border-box !important;
 }
@@ -165,14 +189,16 @@ div.menu-title:focus,
     box-shadow: none !important;
 }
 
-/* カーソルホバー時：マウスが乗ったときのハイライト（Zinc-800） */
+/* 🚨【カーソルホバー時】マウスが乗ったときのハイライト（Zinc-800） */
 .navigation a:hover, 
 .user-menu *:hover,
 .menu-dropdown a:hover,
 .links a:hover,
 .page-list-level a:hover,
 .user-menu .menu-title:hover,
-div.menu-title:hover {
+div.menu-title:hover,
+.user-menu .action-list a:hover,
+.user-menu .full-name a:hover {
     color: #ffffff !important;
     background-color: #27272a !important; /* ほんのりハイライト (Zinc-800) */
     outline: none !important;
@@ -186,7 +212,7 @@ div.menu-title:hover {
 .navigation li.active a,
 .page-list-level a.current {
     color: #ffffff !important;
-    background-color: #27272a !important; /* 選択中のインジケーター (Zinc-800) */
+    background-color: #27272a !important; 
     font-weight: 600 !important;
 }
 

@@ -49,7 +49,7 @@
 }
 
 /* ==========================================================================
-   ログイン後のメイン画面・管理UIのダークモード化
+   ログイン後のメイン画面・管理UIのダークモード化（視認性向上版）
    ========================================================================== */
 
 /* 全体の背景と文字色 */
@@ -58,11 +58,35 @@ body, .viewport, .main-view {
     color: #f4f4f5 !important;
 }
 
-/* ヘッダー・ナビゲーション部分 */
+/* ヘッダー・トップメニュー全体の背景 */
 .header, .navigation, .user-menu {
     background-color: #18181b !important;
     border-bottom: 1px solid #27272a !important;
+}
+
+/* 🚨 【改善】メニュー内の文字をハッキリ見せる */
+.navigation a, .navigation span, .user-menu .name {
+    color: #a1a1aa !important; /* 通常時は落ち着いたグレー */
+    font-weight: 500 !important;
+    text-decoration: none !important;
+}
+
+/* 🚨 【改善】メニューにホバーした時と、現在選択中のタブ（active）のスタイル */
+.navigation a:hover, .user-menu:hover .name {
+    color: #ffffff !important; /* ホバーで白文字に */
+}
+
+.navigation a.active {
     color: #ffffff !important;
+    background-color: #27272a !important; /* shadcn/ui Zinc風の背景 */
+    border-radius: 6px !important;
+}
+
+/* 設定画面のテーブル（Username, Active sinceなど）の視認性向上 */
+table.sorted th {
+    background-color: #18181b !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid #27272a !important;
 }
 
 /* 接続先カード・リスト部分 */
@@ -76,7 +100,6 @@ body, .viewport, .main-view {
     background: #27272a !important;
 }
 
-/* テキストやタイトルの色調整 */
-h2, h3, .name {
+h2, h3 {
     color: #ffffff !important;
 }

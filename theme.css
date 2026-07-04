@@ -59,13 +59,12 @@ body, .viewport, .main-view, .settings-view, .page-container {
     color: #f4f4f5 !important;
 }
 
-/* ページ見出し等の基本文字色 */
 h2, h3, .header h2, p, .title {
     color: #ffffff !important;
 }
 
 /* --------------------------------------------------------------------------
-   3. ナビゲーション・メニュー・全タブ（shadcn/ui Zinc 完全再現）
+   3. ナビゲーション・メニュー・全タブ（プルダウン白化＆文字消え完全対策）
    -------------------------------------------------------------------------- */
 /* メニューバーおよび展開されたドロップダウン全体のコンテナ */
 .header, 
@@ -75,16 +74,15 @@ h2, h3, .header h2, p, .title {
 .page-list-level,
 .user-menu.open .menu-dropdown,
 .user-menu .menu-dropdown,
-.user-menu .menu-contents { /* 🚨 白い箱の正体である中身コンテナを直撃 */
+.user-menu .menu-contents { 
     background-color: #18181b !important; /* レイヤー1個上のグレー (Zinc-900) */
 }
 
-/* ヘッダーとドロップダウンメニューの境界線 */
 .header {
     border-bottom: 1px solid #27272a !important;
 }
 
-/* 🚨 ドロップダウンメニューの「白い四角い箱」を完全にダーク化＆枠線指定 */
+/* 🚨 マウスアウト時も絶対に白くならないようドロップダウンの「箱」の背景を完全固定 */
 .user-menu .menu-dropdown,
 .user-menu .menu-contents {
     border: 1px solid #27272a !important;
@@ -93,7 +91,6 @@ h2, h3, .header h2, p, .title {
     background: #18181b !important;
 }
 
-/* 不要な標準の背景や枠線を徹底カット */
 .navigation li, 
 .navigation .menu-dropdown, 
 .navigation .client-group,
@@ -106,7 +103,7 @@ h2, h3, .header h2, p, .title {
     border: none !important;
 }
 
-/* 🚨【絶対解決】ドロップダウン内の「すべてのテキスト・名前・会社名・リンク」を常時白に強制 */
+/* ドロップダウン内を含めた全メニューテキストを常時白に強制 */
 .navigation *,
 .user-menu *,
 .menu-dropdown *,
@@ -133,7 +130,6 @@ div.menu-title,
     border: none !important;
 }
 
-/* 会社名や組織名の文字を少しだけ視認性の良いグレーに微調整 */
 .user-menu .organization,
 .user-menu .organizational-role {
     color: #a1a1aa !important; /* Zinc-400 */
@@ -141,7 +137,6 @@ div.menu-title,
     padding: 2px 12px !important;
 }
 
-/* 各メニューの項目に適切な内包パディングと角丸を設定 */
 .navigation a,
 .menu-dropdown a,
 .links a,
@@ -153,21 +148,17 @@ div.menu-title,
     border-radius: 6px !important;
 }
 
-/* 🚨 左のヒト型アイコン、右の三角アイコンの両方と絶対に重ならないパディング設定 */
+/* 🚨 ユーザー名「daisuke」が左右のアイコンと絶対に重ならないパディング */
 .user-menu .menu-title,
 div.menu-title,
 .user-menu div.menu-title {
-    padding-top: 8px !important;
-    padding-left: 32px !important;  
-    padding-bottom: 8px !important;
-    padding-right: 32px !important; 
+    padding: 8px 32px !important; /* 左右に32pxの安全な余白 */
     display: inline-block !important;
     border-radius: 6px !important;
     transition: background-color 0.2s, color 0.2s !important;
     box-sizing: border-box !important;
 }
 
-/* ナビゲーションやドロップダウンの各aタグを横いっぱいに広げる設定 */
 .menu-dropdown a,
 .page-list-level a,
 .user-menu .action-list a,
@@ -176,7 +167,6 @@ div.menu-title,
     box-sizing: border-box !important;
 }
 
-/* マウスホバー時やクリック時のブラウザ標準の白い輪郭線を完全に消去 */
 .navigation a:focus,
 .user-menu *:focus,
 .menu-dropdown a:focus,
@@ -189,7 +179,7 @@ div.menu-title:focus,
     box-shadow: none !important;
 }
 
-/* 🚨【カーソルホバー時】マウスが乗ったときのハイライト（Zinc-800） */
+/* カーソルホバー時ハイライト */
 .navigation a:hover, 
 .user-menu *:hover,
 .menu-dropdown a:hover,
@@ -200,11 +190,10 @@ div.menu-title:hover,
 .user-menu .action-list a:hover,
 .user-menu .full-name a:hover {
     color: #ffffff !important;
-    background-color: #27272a !important; /* ほんのりハイライト (Zinc-800) */
+    background-color: #27272a !important; /* Zinc-800 */
     outline: none !important;
 }
 
-/* 現在選択中のタブ（Active Sessionsなど）の反転マーク */
 .navigation .active,
 .navigation .active *,
 .links .active,
@@ -217,9 +206,9 @@ div.menu-title:hover,
 }
 
 /* --------------------------------------------------------------------------
-   4. テーブル・ボタン・フォーム部品（設定画面のコンポーネント）
+   4. ボタン・フォーム部品（New Connection アイコン重なり対策）
    -------------------------------------------------------------------------- */
-/* ボタン（Kill Sessionsなど） */
+/* Kill Sessions や通常のボタン */
 button, .button, .submit-button {
     background-color: #27272a !important;
     color: #f4f4f5 !important;
@@ -228,11 +217,21 @@ button, .button, .submit-button {
     padding: 6px 12px !important;
     cursor: pointer !important;
     font-weight: 500 !important;
+    display: inline-block !important;
+    text-decoration: none !important;
 }
 
-button:hover, .button:hover {
+button:hover, .button:hover, .submit-button:hover {
     background-color: #3f3f46 !important;
     color: #ffffff !important;
+}
+
+/* 🚨【絶対解決】New Connection などのアイコン付きボタンの文字被りを防止 */
+.button.add-connection,
+.button.add-group,
+.button.import {
+    padding-left: 34px !important; /* 左側のアイコンスペースを強制確保 */
+    background-position: 10px center !important; /* アイコンの位置を綺麗に微調整 */
 }
 
 /* 検索窓やセレクトボックス */

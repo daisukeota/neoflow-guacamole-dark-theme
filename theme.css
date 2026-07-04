@@ -5,7 +5,7 @@
 /* --------------------------------------------------------------------------
    1. ログイン・ログアウト画面 (Login / Logout UI)
    -------------------------------------------------------------------------- */
-/* 🚨【超強力】ログアウト画面の背景が絶対に白に戻らないよう、すべてのルート要素・背景を直撃 */
+/* 🚨【絶対解決】ログアウト状態の画面全体を強制的に深い黒 (Zinc-950) に */
 html, 
 body, 
 .login-ui, 
@@ -14,24 +14,24 @@ body,
 body.logout,
 #logout-screen,
 .guac-logout,
-.logged-out {
+.logged-out,
+guac-modal { /* 👈 モーダルのルートを直撃 */
     background-color: #09090b !important;
     background: #09090b !important;
     background-image: none !important;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* 🚨 ログイン・ログアウト時の「白い四角いダイアログ」を完全にダーク化 */
+/* 🚨【最重要】ログアウト画面中央の「白い四角い箱」を完全にダーク化 */
 .login-ui .dialog, 
 .logged-out-ui .dialog, 
 .dialog-container .dialog,
-.logout .dialog,
-body.logout .dialog,
-.logged-out .dialog,
+guac-modal .modal-contents, /* 👈 ここが真っ白の犯人でした */
+.notification,
 div.dialog,
 .dialog {
-    background-color: #09090b !important;
-    background: #09090b !important;
+    background-color: #18181b !important; /* レイヤー1個上のグレー (Zinc-900) */
+    background: #18181b !important;
     color: #f4f4f5 !important;
     border: 1px solid #27272a !important; /* Zinc-800 の繊細なボーダー */
     border-radius: 8px !important;
@@ -39,13 +39,11 @@ div.dialog,
     padding: 2.5em !important;
 }
 
-/* ダイアログ内のテキスト・メッセージ（You have been logged out. など） */
+/* ダイアログ内のテキスト（"You have been logged out." など） */
 .login-ui .dialog h2, 
 .logged-out-ui .dialog h2, 
-.logout .dialog h2,
-body.logout .dialog *,
-div.dialog h2,
-div.dialog p,
+guac-modal .modal-contents p,
+.notification p,
 .dialog p, 
 .dialog div,
 .dialog span {
@@ -69,13 +67,12 @@ div.dialog p,
     outline: none !important;
 }
 
-/* 「Submit」および「Re-login」ボタンを shadcn プライマリ仕様（反転白）に統一 */
+/* 🚨「Submit」および「Re-login」ボタンを中央配置のシャープな反転白に統一 */
 .login-ui .submit, 
 .logged-out-ui .re-login, 
 .logged-out-ui .button,
-.logout .re-login,
-body.logout .re-login,
-.logged-out .re-login,
+.notification button, /* 👈 ログアウト画面のボタンを直撃 */
+guac-modal button,
 .dialog .submit,
 .dialog button,
 .re-login {
@@ -84,23 +81,21 @@ body.logout .re-login,
     font-weight: 500 !important;
     border-radius: 6px !important;
     border: none !important;
-    padding: 8px 16px !important;
+    padding: 8px 20px !important;
     cursor: pointer !important;
     display: inline-block !important;
     text-decoration: none !important;
     transition: background-color 0.2s !important;
     text-shadow: none !important;
     box-shadow: none !important;
+    margin-top: 12px !important;
 }
 
 .login-ui .submit:hover, 
 .logged-out-ui .re-login:hover, 
-.logged-out-ui .button:hover,
-.logout .re-login:hover,
-body.logout .re-login:hover,
-.logged-out .re-login:hover,
+.notification button:hover,
+guac-modal button:hover,
 .dialog .submit:hover,
-.dialog button:hover,
 .re-login:hover {
     background: #e4e4e7 !important; /* Hover時は Zinc-200 */
     color: #09090b !important;

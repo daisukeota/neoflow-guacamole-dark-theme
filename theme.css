@@ -3,28 +3,32 @@
    ========================================================================= */
 
 /* --------------------------------------------------------------------------
-   1. ログイン画面 (Login UI)
+   1. ログイン・ログアウト画面 (Login / Logout UI)
    -------------------------------------------------------------------------- */
-.login-ui {
+/* 背景をすべて shadcn/ui の深い黒 (Zinc-950) に統一 */
+.login-ui, .logged-out-ui, body.logged-out {
     background-color: #09090b !important;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-.login-ui .dialog {
+/* ログインおよびログアウト時のダイアログボックス */
+.login-ui .dialog, .logged-out-ui .dialog, .dialog-container .dialog {
     background: #09090b !important;
     color: #f4f4f5 !important;
-    border: 1px solid #27272a !important;
+    border: 1px solid #27272a !important; /* Zinc-800 の繊細なボーダー */
     border-radius: 8px !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
-    padding: 2em !important;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.6) !important;
+    padding: 2.5em !important;
 }
 
-.login-ui .dialog h2 {
+/* ダイアログ内のテキスト・見出し */
+.login-ui .dialog h2, .logged-out-ui .dialog h2, .logged-out-ui p, .logged-out-ui .paragraph {
     color: #ffffff !important;
     font-weight: 600 !important;
-    letter-spacing: -0.05em !important;
+    letter-spacing: -0.02em !important;
 }
 
+/* フォームの入力エリア */
 .login-ui .dialog input {
     background: #09090b !important;
     color: #f4f4f5 !important;
@@ -34,21 +38,35 @@
 }
 
 .login-ui .dialog input:focus {
-    border-color: #a1a1aa !important;
+    border-color: #a1a1aa !important; /* フォーカス時は Zinc-400 */
     outline: none !important;
 }
 
-.login-ui .submit {
-    background: #f4f4f5 !important;
-    color: #09090b !important;
+/* 🚨【仕上げ】「Submit」および「Re-login」ボタンを shadcn プライマリ仕様（反転白）に */
+.login-ui .submit, 
+.logged-out-ui .re-login, 
+.logged-out-ui .button,
+.dialog .submit {
+    background: #f4f4f5 !important; /* Zinc-100 */
+    color: #09090b !important; /* 文字は漆黒 */
     font-weight: 500 !important;
     border-radius: 6px !important;
     border: none !important;
+    padding: 8px 16px !important;
     cursor: pointer !important;
+    display: inline-block !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
 }
 
-.login-ui .submit:hover {
-    background: #e4e4e7 !important;
+.login-ui .submit:hover, 
+.logged-out-ui .re-login:hover, 
+.logged-out-ui .button:hover,
+.dialog .submit:hover {
+    background: #e4e4e7 !important; /* Hover時は Zinc-200 */
+    color: #09090b !important;
 }
 
 /* --------------------------------------------------------------------------

@@ -206,32 +206,38 @@ div.menu-title:hover,
 }
 
 /* --------------------------------------------------------------------------
-   4. ボタン・フォーム部品（New Connection アイコン重なり対策）
+   4. ボタン・フォーム部品（各種ボタンのアイコン重なり完全対策）
    -------------------------------------------------------------------------- */
-/* Kill Sessions や通常のボタン */
-button, .button, .submit-button {
-    background-color: #27272a !important;
-    color: #f4f4f5 !important;
-    border: 1px solid #3f3f46 !important;
+/* Kill Sessions、Update Password、その他すべての標準ボタンのベース */
+button, .button, .submit-button, .change-password {
+    background-color: #27272a !important; /* Zinc-800 */
+    color: #f4f4f5 !important; /* Zinc-100 */
+    border: 1px solid #3f3f46 !important; /* Zinc-700 */
     border-radius: 6px !important;
-    padding: 6px 12px !important;
+    padding: 6px 12px !important; /* 通常のボタン用パディング */
     cursor: pointer !important;
     font-weight: 500 !important;
     display: inline-block !important;
     text-decoration: none !important;
+    transition: background-color 0.2s, border-color 0.2s !important;
+    box-sizing: border-box !important;
 }
 
-button:hover, .button:hover, .submit-button:hover {
-    background-color: #3f3f46 !important;
+button:hover, .button:hover, .submit-button:hover, .change-password:hover {
+    background-color: #3f3f46 !important; /* Zinc-700 */
     color: #ffffff !important;
 }
 
-/* 🚨【絶対解決】New Connection などのアイコン付きボタンの文字被りを防止 */
+/* 🚨【絶対解決】アイコン付きボタン群の文字被りを一網打尽で防止 */
 .button.add-connection,
+.button.add-connection-group,
+.button.import-connections,
+.button.add-user-group,
+.button.add-user,
 .button.add-group,
 .button.import {
-    padding-left: 34px !important; /* 左側のアイコンスペースを強制確保 */
-    background-position: 10px center !important; /* アイコンの位置を綺麗に微調整 */
+    padding-left: 36px !important; /* 左側にアイコン用の安全なスペースを強制確保 */
+    background-position: 12px center !important; /* アイコンの位置を綺麗に整列 */
 }
 
 /* 検索窓やセレクトボックス */

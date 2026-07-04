@@ -214,7 +214,7 @@ button, .button, .submit-button, .change-password {
     color: #f4f4f5 !important; /* Zinc-100 */
     border: 1px solid #3f3f46 !important; /* Zinc-700 */
     border-radius: 6px !important;
-    padding: 6px 12px !important; /* 通常のボタン用パディング */
+    padding: 6px 12px !important; /* 通常のプレーンなボタン用余白 */
     cursor: pointer !important;
     font-weight: 500 !important;
     display: inline-block !important;
@@ -228,7 +228,14 @@ button:hover, .button:hover, .submit-button:hover, .change-password:hover {
     color: #ffffff !important;
 }
 
-/* 🚨【絶対解決】アイコン付きボタン群の文字被りを一網打尽で防止 */
+/* 🚨【最重要】Update Password ボタンのアイコン用余白を完全にキャンセルして中央に直す */
+button.change-password,
+.change-password {
+    padding-left: 12px !important; /* プレーンなボタンとして均等な余白に固定 */
+    background-image: none !important;
+}
+
+/* 🚨 アイコン付きボタン群だけを狙い撃ちして、左側に安全なスペースを強制確保 */
 .button.add-connection,
 .button.add-connection-group,
 .button.import-connections,
@@ -236,8 +243,8 @@ button:hover, .button:hover, .submit-button:hover, .change-password:hover {
 .button.add-user,
 .button.add-group,
 .button.import {
-    padding-left: 36px !important; /* 左側にアイコン用の安全なスペースを強制確保 */
-    background-position: 12px center !important; /* アイコンの位置を綺麗に整列 */
+    padding-left: 36px !important; 
+    background-position: 12px center !important; 
 }
 
 /* 検索窓やセレクトボックス */

@@ -67,13 +67,25 @@ h2, h3, .header h2, p, .title {
 /* --------------------------------------------------------------------------
    3. ナビゲーション・メニュー・全タブ（shadcn/ui Zinc 完全再現）
    -------------------------------------------------------------------------- */
-/* メニューバー全体のコンテナ */
-.header, .navigation, .user-menu, .menu-dropdown, .page-list-level {
+/* メニューバーおよび展開されたドロップダウン全体のコンテナ */
+.header, 
+.navigation, 
+.user-menu, 
+.menu-dropdown, 
+.page-list-level,
+.user-menu.open .menu-dropdown,
+.user-menu .menu-dropdown {
     background-color: #18181b !important; /* レイヤー1個上のグレー (Zinc-900) */
 }
 
+/* ヘッダーとドロップダウンメニューの境界線 */
 .header {
     border-bottom: 1px solid #27272a !important;
+}
+.user-menu .menu-dropdown {
+    border: 1px solid #27272a !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
 }
 
 /* 不要な標準の背景や枠線を徹底カット */
@@ -81,15 +93,13 @@ h2, h3, .header h2, p, .title {
 .navigation .menu-dropdown, 
 .navigation .client-group,
 .navigation .links,
-.user-menu,
-.menu-title,
 .page-list-level,
 .page-list-level li {
     background: transparent !important;
     border: none !important;
 }
 
-/* 🚨【絶対解決】すべてのメニュー・リンク文字（Active Sessions, History, Usersなど全般）を白に強制固定 */
+/* 🚨【絶対解決】メニュー・リンク・ドロップダウン内の「全文字」を白に強制固定 */
 .navigation *,
 .user-menu *,
 .menu-dropdown *,
@@ -98,7 +108,10 @@ h2, h3, .header h2, p, .title {
 .page-list-level a:link,
 .page-list-level a:visited,
 .menu-title,
-.name {
+.name,
+.menu-dropdown a,
+.menu-dropdown a:link,
+.menu-dropdown a:visited {
     color: #f4f4f5 !important; /* 明るいグレー (Zinc-100) */
     font-weight: 500 !important;
     text-decoration: none !important;
@@ -114,19 +127,22 @@ h2, h3, .header h2, p, .title {
     display: inline-block !important;
     border-radius: 6px !important;
     transition: background-color 0.2s, color 0.2s !important;
+    width: 100% !important; /* ドロップダウン内で横いっぱいに広げる */
+    box-sizing: border-box !important;
 }
 
-/* ホバー時はさらに明るく、ほんのり背景を浮かせます */
+/* 🚨【カーソルホバー時】メニューやドロップダウン内でマウスが乗ったときのハイライト */
 .navigation a:hover, 
 .user-menu *:hover,
 .menu-dropdown a:hover,
 .links a:hover,
-.page-list-level a:hover {
+.page-list-level a:hover,
+.user-menu .menu-title:hover {
     color: #ffffff !important;
     background-color: #27272a !important; /* ほんのりハイライト (Zinc-800) */
 }
 
-/* 🚨【選択中のタブ】現在開いているページ（.current）を shadcn/ui 風に反転マーク */
+/* 現在選択中のタブ（Active Sessionsなど）の反転マーク */
 .navigation .active,
 .navigation .active *,
 .links .active,

@@ -65,62 +65,65 @@ h2, h3, .header h2, p {
 }
 
 /* --------------------------------------------------------------------------
-   3. ナビゲーションタブ・トップメニューの視認性改善（強化版）
+   3. ナビゲーションタブ・トップメニューの視認性改善（完全版）
    -------------------------------------------------------------------------- */
 .header, .navigation, .user-menu {
     background-color: #18181b !important;
     border-bottom: 1px solid #27272a !important;
 }
 
-/* タブのコンテナとリストの背景・枠線をクリア */
+/* タブやメニューコンテナの背景・枠線をクリア */
 .navigation li, 
 .navigation .menu-dropdown, 
 .navigation .client-group,
-.navigation .links {
+.navigation .links,
+.user-menu,
+.menu-title {
     background: transparent !important;
     border: none !important;
 }
 
-/* 🚨【最重要】Active Sessions や History などの文字色を強制的に明るくする */
-.navigation .links a,
-.navigation .links a:link,
-.navigation .links a:visited,
+/* 🚨【超重要】すべてのメニュー・リンク文字（Home, Settings, Logout, ユーザー名など）を強制白に */
 .navigation a, 
+.navigation a:link, 
+.navigation a:visited, 
 .navigation span,
-.menu-dropdown a {
-    color: #f4f4f5 !important; /* shadcn/uiの明るいテキスト色(Zinc-100) */
+.user-menu .menu-title,
+.user-menu .menu-title a,
+.user-menu .name,
+.menu-dropdown a,
+.links a {
+    color: #f4f4f5 !important; /* 明るいテキスト(Zinc-100) */
     font-weight: 500 !important;
     background: transparent !important;
     border: none !important;
     padding: 6px 12px !important;
     display: inline-block !important;
     opacity: 0.9 !important;
+    text-decoration: none !important;
 }
 
-/* ホバーした時は完全な白に輝かせる */
-.navigation .links a:hover,
+/* ホバーした時は完全な白に */
 .navigation a:hover, 
 .navigation span:hover,
-.menu-dropdown a:hover {
+.user-menu .menu-title:hover,
+.user-menu .name:hover,
+.menu-dropdown a:hover,
+.links a:hover {
     color: #ffffff !important;
     opacity: 1 !important;
     text-decoration: none !important;
 }
 
-/* 現在アクティブ（選択中）のタブの背景をZincスタイルにする */
-.navigation .links a.active,
+/* 現在アクティブ（選択中）のメニュー背景 */
 .navigation a.active, 
 .navigation li.active a,
-.menu-dropdown a.active {
+.menu-dropdown a.active,
+.links a.active {
     color: #ffffff !important;
-    background-color: #27272a !important; /* ほどよいグレーの背景(Zinc-800) */
+    background-color: #27272a !important; /* ほどよいグレー背景(Zinc-800) */
     border-radius: 6px !important;
     opacity: 1 !important;
-}
-
-/* ユーザー名メニュー部分の調整 */
-.user-menu .name {
-    color: #ffffff !important;
 }
 
 /* --------------------------------------------------------------------------

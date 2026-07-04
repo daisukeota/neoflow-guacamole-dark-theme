@@ -5,20 +5,33 @@
 /* --------------------------------------------------------------------------
    1. ログイン・ログアウト画面 (Login / Logout UI)
    -------------------------------------------------------------------------- */
-/* 🚨【絶対解決】ログアウト後やログイン前の「画面全体」を強制的に shadcn の深い黒 (Zinc-950) に */
-html, body, .login-ui, .logged-out-ui, .logout, body.logout {
+/* 🚨【超強力】ログアウト画面の背景が絶対に白に戻らないよう、すべてのルート要素・背景を直撃 */
+html, 
+body, 
+.login-ui, 
+.logged-out-ui, 
+.logout, 
+body.logout,
+#logout-screen,
+.guac-logout,
+.logged-out {
     background-color: #09090b !important;
+    background: #09090b !important;
     background-image: none !important;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* ログインおよびログアウト時のダイアログボックス（白い四角をダーク化） */
+/* 🚨 ログイン・ログアウト時の「白い四角いダイアログ」を完全にダーク化 */
 .login-ui .dialog, 
 .logged-out-ui .dialog, 
 .dialog-container .dialog,
 .logout .dialog,
-div.dialog {
+body.logout .dialog,
+.logged-out .dialog,
+div.dialog,
+.dialog {
     background-color: #09090b !important;
+    background: #09090b !important;
     color: #f4f4f5 !important;
     border: 1px solid #27272a !important; /* Zinc-800 の繊細なボーダー */
     border-radius: 8px !important;
@@ -26,15 +39,20 @@ div.dialog {
     padding: 2.5em !important;
 }
 
-/* ダイアログ内のテキスト・メッセージ */
+/* ダイアログ内のテキスト・メッセージ（You have been logged out. など） */
 .login-ui .dialog h2, 
 .logged-out-ui .dialog h2, 
 .logout .dialog h2,
+body.logout .dialog *,
+div.dialog h2,
+div.dialog p,
 .dialog p, 
-.dialog div {
+.dialog div,
+.dialog span {
     color: #ffffff !important;
     font-weight: 600 !important;
     letter-spacing: -0.02em !important;
+    text-shadow: none !important;
 }
 
 /* フォームの入力エリア */
@@ -56,8 +74,11 @@ div.dialog {
 .logged-out-ui .re-login, 
 .logged-out-ui .button,
 .logout .re-login,
+body.logout .re-login,
+.logged-out .re-login,
 .dialog .submit,
-.dialog button {
+.dialog button,
+.re-login {
     background: #f4f4f5 !important; /* Zinc-100 */
     color: #09090b !important; /* 文字は漆黒 */
     font-weight: 500 !important;
@@ -76,8 +97,11 @@ div.dialog {
 .logged-out-ui .re-login:hover, 
 .logged-out-ui .button:hover,
 .logout .re-login:hover,
+body.logout .re-login:hover,
+.logged-out .re-login:hover,
 .dialog .submit:hover,
-.dialog button:hover {
+.dialog button:hover,
+.re-login:hover {
     background: #e4e4e7 !important; /* Hover時は Zinc-200 */
     color: #09090b !important;
 }

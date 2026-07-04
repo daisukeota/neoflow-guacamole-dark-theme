@@ -99,7 +99,7 @@ h2, h3, .header h2, p, .title {
     border: none !important;
 }
 
-/* 🚨【絶対解決】メニュー・リンク・ドロップダウン内の「全文字」を白に強制固定 */
+/* 🚨【絶対解決】Active SessionsやHistory、そして右上の「daisuke」など全テキストを強制的に明るく */
 .navigation *,
 .user-menu *,
 .menu-dropdown *,
@@ -108,10 +108,13 @@ h2, h3, .header h2, p, .title {
 .page-list-level a:link,
 .page-list-level a:visited,
 .menu-title,
+.menu-title a,
 .name,
 .menu-dropdown a,
 .menu-dropdown a:link,
-.menu-dropdown a:visited {
+.menu-dropdown a:visited,
+div.menu-title,
+.user-menu div.menu-title {
     color: #f4f4f5 !important; /* 明るいグレー (Zinc-100) */
     font-weight: 500 !important;
     text-decoration: none !important;
@@ -122,22 +125,29 @@ h2, h3, .header h2, p, .title {
 .navigation a,
 .menu-dropdown a,
 .links a,
-.page-list-level a {
+.page-list-level a,
+.user-menu .menu-title {
     padding: 8px 12px !important;
     display: inline-block !important;
     border-radius: 6px !important;
     transition: background-color 0.2s, color 0.2s !important;
-    width: 100% !important; /* ドロップダウン内で横いっぱいに広げる */
+}
+
+/* ナビゲーションやドロップダウンの各aタグを横いっぱいに広げる設定 */
+.menu-dropdown a,
+.page-list-level a {
+    width: 100% !important;
     box-sizing: border-box !important;
 }
 
-/* 🚨【カーソルホバー時】メニューやドロップダウン内でマウスが乗ったときのハイライト */
+/* 🚨【カーソルホバー時】マウスが乗ったときのハイライト */
 .navigation a:hover, 
 .user-menu *:hover,
 .menu-dropdown a:hover,
 .links a:hover,
 .page-list-level a:hover,
-.user-menu .menu-title:hover {
+.user-menu .menu-title:hover,
+div.menu-title:hover {
     color: #ffffff !important;
     background-color: #27272a !important; /* ほんのりハイライト (Zinc-800) */
 }

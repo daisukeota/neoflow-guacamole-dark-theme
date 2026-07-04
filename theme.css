@@ -65,11 +65,14 @@ h2, h3, .header h2, p, .title {
 }
 
 /* --------------------------------------------------------------------------
-   3. ナビゲーション・メニュー・全タブ（文字消え絶対防止）
+   3. ナビゲーション・メニュー・全タブ（shadcn/ui Zinc 完全再現）
    -------------------------------------------------------------------------- */
 /* メニューバー全体のコンテナ */
-.header, .navigation, .user-menu, .menu-dropdown {
+.header, .navigation, .user-menu, .menu-dropdown, .page-list-level {
     background-color: #18181b !important; /* レイヤー1個上のグレー (Zinc-900) */
+}
+
+.header {
     border-bottom: 1px solid #27272a !important;
 }
 
@@ -79,50 +82,60 @@ h2, h3, .header h2, p, .title {
 .navigation .client-group,
 .navigation .links,
 .user-menu,
-.menu-title {
+.menu-title,
+.page-list-level,
+.page-list-level li {
     background: transparent !important;
     border: none !important;
 }
 
-/* 🚨【絶対解決】Active Sessions, History, Home, Settings等の「全文字」を白に強制固定 */
+/* 🚨【絶対解決】すべてのメニュー・リンク文字（Active Sessions, History, Usersなど全般）を白に強制固定 */
 .navigation *,
 .user-menu *,
 .menu-dropdown *,
 .links *,
+.page-list-level a,
+.page-list-level a:link,
+.page-list-level a:visited,
 .menu-title,
 .name {
-    color: #f4f4f5 !important; /* パキッと見える明るいグレー (Zinc-100) */
+    color: #f4f4f5 !important; /* 明るいグレー (Zinc-100) */
     font-weight: 500 !important;
     text-decoration: none !important;
     border: none !important;
 }
 
-/* メニューの各項目(aタグ)にパディングを設定し押しやすく */
+/* 各メニューの項目に適切な内包パディングと角丸を設定 */
 .navigation a,
 .menu-dropdown a,
-.links a {
-    padding: 6px 12px !important;
+.links a,
+.page-list-level a {
+    padding: 8px 12px !important;
     display: inline-block !important;
     border-radius: 6px !important;
+    transition: background-color 0.2s, color 0.2s !important;
 }
 
-/* ホバー時は完全な純白に */
+/* ホバー時はさらに明るく、ほんのり背景を浮かせます */
 .navigation a:hover, 
 .user-menu *:hover,
 .menu-dropdown a:hover,
-.links a:hover {
+.links a:hover,
+.page-list-level a:hover {
     color: #ffffff !important;
     background-color: #27272a !important; /* ほんのりハイライト (Zinc-800) */
 }
 
-/* 🚨 現在選択中のタブ（Active Sessionsなど）をshadcn/ui風にマーク */
+/* 🚨【選択中のタブ】現在開いているページ（.current）を shadcn/ui 風に反転マーク */
 .navigation .active,
 .navigation .active *,
 .links .active,
 .links .active *,
-.navigation li.active a {
+.navigation li.active a,
+.page-list-level a.current {
     color: #ffffff !important;
-    background-color: #27272a !important; /* 選択中のインジケーター */
+    background-color: #27272a !important; /* 選択中のインジケーター (Zinc-800) */
+    font-weight: 600 !important;
 }
 
 /* --------------------------------------------------------------------------

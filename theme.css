@@ -129,20 +129,20 @@ div.menu-title,
     padding: 8px 12px !important;
     display: inline-block !important;
     border-radius: 6px !important;
-    transition: background-color 0.2s, color 0.2s !important;
 }
 
-/* 🚨【改善】右側の三角アイコンと「e」が絶対に重ならないように、右だけパディングを広く確保 */
+/* 🚨【アイコンの重なり解消】左のヒト型アイコン、右の三角アイコンの両方と絶対に重ならないパディング設定 */
 .user-menu .menu-title,
 div.menu-title,
 .user-menu div.menu-title {
     padding-top: 8px !important;
-    padding-left: 12px !important;
+    padding-left: 32px !important;  /* 👈 左のヒト型アイコンとの衝突を回避 */
     padding-bottom: 8px !important;
-    padding-right: 32px !important; /* 右側にアイコン用の安全なマージンを固定 */
+    padding-right: 32px !important; /* 👈 右の三角アイコンとの衝突を回避 */
     display: inline-block !important;
     border-radius: 6px !important;
     transition: background-color 0.2s, color 0.2s !important;
+    box-sizing: border-box !important;
 }
 
 /* ナビゲーションやドロップダウンの各aタグを横いっぱいに広げる設定 */

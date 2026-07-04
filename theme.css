@@ -1,0 +1,49 @@
+/* ==========================================================================
+   Dark Color System for Apache Guacamole
+   ========================================================================== */
+
+.login-ui {
+    background-color: #09090b !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.login-ui .dialog {
+    background: #09090b !important;
+    color: #f4f4f5 !important;
+    border: 1px solid #27272a !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
+    padding: 2em !important;
+}
+
+.login-ui .dialog h2 {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.05em !important;
+}
+
+.login-ui .dialog input {
+    background: #09090b !important;
+    color: #f4f4f5 !important;
+    border: 1px solid #27272a !important;
+    border-radius: 6px !important;
+    padding: 8px 12px !important;
+}
+
+.login-ui .dialog input:focus {
+    border-color: #a1a1aa !important;
+    outline: none !important;
+}
+
+.login-ui .submit {
+    background: #f4f4f5 !important;
+    color: #09090b !important;
+    font-weight: 500 !important;
+    border-radius: 6px !important;
+    border: none !important;
+    cursor: pointer !important;
+}
+
+.login-ui .submit:hover {
+    background: #e4e4e7 !important;
+}

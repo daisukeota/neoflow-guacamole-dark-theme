@@ -99,7 +99,7 @@ h2, h3, .header h2, p, .title {
     border: none !important;
 }
 
-/* 🚨【絶対解決】すべてのメニューテキストを強制的に明るく */
+/* 【絶対解決】すべてのメニューテキストを強制的に明るく */
 .navigation *,
 .user-menu *,
 .menu-dropdown *,
@@ -132,11 +132,14 @@ div.menu-title,
     transition: background-color 0.2s, color 0.2s !important;
 }
 
-/* 🚨【文字の切れ改善】ユーザー名「daisuke」に適切な右余白を持たせて「e」をはっきり見せる */
+/* 🚨【改善】右側の三角アイコンと「e」が絶対に重ならないように、右だけパディングを広く確保 */
 .user-menu .menu-title,
 div.menu-title,
 .user-menu div.menu-title {
-    padding: 8px 16px !important; /* 左右の余白を少し広げました */
+    padding-top: 8px !important;
+    padding-left: 12px !important;
+    padding-bottom: 8px !important;
+    padding-right: 32px !important; /* 右側にアイコン用の安全なマージンを固定 */
     display: inline-block !important;
     border-radius: 6px !important;
     transition: background-color 0.2s, color 0.2s !important;
@@ -149,7 +152,7 @@ div.menu-title,
     box-sizing: border-box !important;
 }
 
-/* 🚨【白い枠線の消去】マウスホバー時やクリック時のブラウザ標準の白い輪郭線を完全に消去 */
+/* マウスホバー時やクリック時のブラウザ標準の白い輪郭線を完全に消去 */
 .navigation a:focus,
 .user-menu *:focus,
 .menu-dropdown a:focus,
@@ -162,7 +165,7 @@ div.menu-title:focus,
     box-shadow: none !important;
 }
 
-/* 🚨【カーソルホバー時】マウスが乗ったときのハイライト（Zinc-800） */
+/* カーソルホバー時：マウスが乗ったときのハイライト（Zinc-800） */
 .navigation a:hover, 
 .user-menu *:hover,
 .menu-dropdown a:hover,
@@ -172,7 +175,7 @@ div.menu-title:focus,
 div.menu-title:hover {
     color: #ffffff !important;
     background-color: #27272a !important; /* ほんのりハイライト (Zinc-800) */
-    outline: none !important; /* ここでも念のため枠線をカット */
+    outline: none !important;
 }
 
 /* 現在選択中のタブ（Active Sessionsなど）の反転マーク */

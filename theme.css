@@ -286,16 +286,44 @@ input:focus {
     outline: none !important;
 }
 
-/* 設定画面のデータテーブル */
+/* 設定画面のデータテーブル（shadcn/ui モダンストライプ仕様） */
+table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    background-color: transparent !important;
+}
+
+/* テーブルヘッダー：Zinc-900背景に純白の太文字 */
 table th, table.sorted th {
     background-color: #18181b !important;
     color: #ffffff !important;
-    border-bottom: 1px solid #27272a !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid #27272a !important; /* 境界線を少し太くくっきりと */
+    padding: 12px !important;
+    text-align: left !important;
 }
 
+/* 通常の行（奇数行）：基本の黒背景 */
+table tr {
+    background-color: #09090b !important;
+    transition: background-color 0.2s !important;
+}
+
+/* 🚨【視認性改善】偶数行（2行目、4行目...）をほんのり明るいグレー(Zinc-900)にして縞模様に */
+table tr:nth-child(even) {
+    background-color: #18181b !important;
+}
+
+/* 🚨【視認性改善】マウスカーソルが乗った行を Zinc-800 でハイライト */
+table tr:hover {
+    background-color: #27272a !important;
+}
+
+/* 各セルの文字色と下部ボーダー(Zinc-800) */
 table td {
-    border-bottom: 1px solid #18181b !important;
-    color: #e4e4e7 !important;
+    padding: 12px !important;
+    border-bottom: 1px solid #27272a !important; /* ボーダーをくっきり化 */
+    color: #e4e4e7 !important; /* 読みやすい少し明るめのグレー(Zinc-200) */
 }
 
 /* 接続先リスト・カード部分 */

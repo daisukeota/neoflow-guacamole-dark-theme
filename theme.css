@@ -206,15 +206,15 @@ div.menu-title:hover,
 }
 
 /* --------------------------------------------------------------------------
-   4. ボタン・フォーム部品（各種ボタンのアイコン重なり完全対策）
+   4. ボタン・フォーム部品（各種ボタンのアイコン重なり・文字めり込み完全対策）
    -------------------------------------------------------------------------- */
 /* Kill Sessions、Update Password、その他すべての標準ボタンのベース */
-button, .button, .submit-button, .change-password {
+button, .button, .submit-button, .change-password, .action-buttons button {
     background-color: #27272a !important; /* Zinc-800 */
     color: #f4f4f5 !important; /* Zinc-100 */
     border: 1px solid #3f3f46 !important; /* Zinc-700 */
     border-radius: 6px !important;
-    padding: 6px 12px !important; /* 通常のプレーンなボタン用余白 */
+    padding: 8px 16px !important; /* 🚨 プレーンなボタンの文字めり込みを防ぐため上下8px・左右16pxに拡張 */
     cursor: pointer !important;
     font-weight: 500 !important;
     display: inline-block !important;
@@ -223,19 +223,21 @@ button, .button, .submit-button, .change-password {
     box-sizing: border-box !important;
 }
 
-button:hover, .button:hover, .submit-button:hover, .change-password:hover {
+button:hover, .button:hover, .submit-button:hover, .change-password:hover, .action-buttons button:hover {
     background-color: #3f3f46 !important; /* Zinc-700 */
     color: #ffffff !important;
 }
 
-/* 🚨【最重要】Update Password ボタンのアイコン用余白を完全にキャンセルして中央に直す */
+/* 🚨【絶対解決】Update Password ボタンの背景アイコン設定を完全に消去し、パディングを固定 */
 button.change-password,
-.change-password {
-    padding-left: 12px !important; /* プレーンなボタンとして均等な余白に固定 */
+.change-password,
+.action-buttons button.change-password {
+    padding-left: 16px !important; /* 👈 左側の枠線から文字を16px綺麗に離します */
+    padding-right: 16px !important;
     background-image: none !important;
 }
 
-/* 🚨 アイコン付きボタン群だけを狙い撃ちして、左側に安全なスペースを強制確保 */
+/* 🚨 アイコン付きボタン群（New Connectionなど）だけを狙い撃ちして、左側に安全なスペースを強制確保 */
 .button.add-connection,
 .button.add-connection-group,
 .button.import-connections,

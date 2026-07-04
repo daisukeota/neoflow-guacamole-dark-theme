@@ -1,7 +1,10 @@
 /* ==========================================================================
-   Dark Color System for Apache Guacamole
+   Dark Color System for Apache Guacamole (shadcn/ui Zinc)
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   1. ログイン画面 (Login UI)
+   -------------------------------------------------------------------------- */
 .login-ui {
     background-color: #09090b !important;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -48,48 +51,109 @@
     background: #e4e4e7 !important;
 }
 
-/* ==========================================================================
-   ログイン後のメイン画面・管理UIのダークモード化（視認性向上版）
-   ========================================================================== */
-
-/* 全体の背景と文字色 */
-body, .viewport, .main-view {
+/* --------------------------------------------------------------------------
+   2. メイン画面・管理UI全体の背景と基本設定
+   -------------------------------------------------------------------------- */
+body, .viewport, .main-view, .settings-view {
     background-color: #09090b !important;
     color: #f4f4f5 !important;
 }
 
-/* ヘッダー・トップメニュー全体の背景 */
+/* ページ見出し等の文字色調整 */
+h2, h3, .header h2, p {
+    color: #ffffff !important;
+}
+
+/* --------------------------------------------------------------------------
+   3. ナビゲーションタブ・トップメニューの視認性改善
+   -------------------------------------------------------------------------- */
 .header, .navigation, .user-menu {
     background-color: #18181b !important;
     border-bottom: 1px solid #27272a !important;
 }
 
-/* 🚨 【改善】メニュー内の文字をハッキリ見せる */
-.navigation a, .navigation span, .user-menu .name {
-    color: #a1a1aa !important; /* 通常時は落ち着いたグレー */
+/* タブのコンテナとリストの背景・枠線をクリア */
+.navigation li, 
+.navigation .menu-dropdown, 
+.navigation .client-group {
+    background: transparent !important;
+    border: none !important;
+}
+
+/* タブ文字（History, Users, Groupsなど）を強制的に明るいグレーに */
+.navigation a, 
+.navigation a:link, 
+.navigation a:visited, 
+.navigation span {
+    color: #a1a1aa !important;
     font-weight: 500 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 6px 12px !important;
+    display: inline-block !important;
+}
+
+/* ホバーした時は白文字に */
+.navigation a:hover, 
+.navigation span:hover {
+    color: #ffffff !important;
     text-decoration: none !important;
 }
 
-/* 🚨 【改善】メニューにホバーした時と、現在選択中のタブ（active）のスタイル */
-.navigation a:hover, .user-menu:hover .name {
-    color: #ffffff !important; /* ホバーで白文字に */
-}
-
-.navigation a.active {
+/* 現在アクティブ（選択中）のタブ */
+.navigation a.active, 
+.navigation li.active a,
+.navigation .menu-dropdown a.active {
     color: #ffffff !important;
-    background-color: #27272a !important; /* shadcn/ui Zinc風の背景 */
+    background-color: #27272a !important;
     border-radius: 6px !important;
 }
 
-/* 設定画面のテーブル（Username, Active sinceなど）の視認性向上 */
-table.sorted th {
+/* ユーザー名メニュー部分の調整 */
+.user-menu .name {
+    color: #ffffff !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. ボタン・インプット・テーブル等（設定画面のコンポーネント）
+   -------------------------------------------------------------------------- */
+/* Kill Sessions ボタンなど標準ボタンのダーク化 */
+button, .button {
+    background-color: #27272a !important;
+    color: #f4f4f5 !important;
+    border: 1px solid #3f3f46 !important;
+    border-radius: 6px !important;
+    padding: 6px 12px !important;
+    cursor: pointer !important;
+}
+
+button:hover, .button:hover {
+    background-color: #3f3f46 !important;
+    color: #ffffff !important;
+}
+
+/* フィルター入力フォームの調整 */
+input, select, textarea {
+    background-color: #18181b !important;
+    color: #f4f4f5 !important;
+    border: 1px solid #27272a !important;
+    border-radius: 6px !important;
+    padding: 6px 12px !important;
+}
+
+input:focus, select:focus {
+    border-color: #a1a1aa !important;
+    outline: none !important;
+}
+
+/* テーブルヘッダーの調整 */
+table th, table.sorted th {
     background-color: #18181b !important;
     color: #ffffff !important;
     border-bottom: 1px solid #27272a !important;
 }
 
-/* 接続先カード・リスト部分 */
+/* 接続先リスト・カード部分 */
 .connection-list .connection, .recent-connections .connection {
     background: #18181b !important;
     border: 1px solid #27272a !important;
@@ -98,8 +162,4 @@ table.sorted th {
 
 .connection-list .connection:hover, .recent-connections .connection:hover {
     background: #27272a !important;
-}
-
-h2, h3 {
-    color: #ffffff !important;
 }
